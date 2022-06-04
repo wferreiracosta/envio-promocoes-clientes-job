@@ -18,6 +18,10 @@ public class ProcessarEmailProdutoClienteProcessor implements ItemProcessor<Inte
         email.setTo(interesseProdutoCliente.getCliente().getEmail());
         email.setSubject("Promoção Imperdivel!!!!");
         email.setText(gerarTextoPromocao(interesseProdutoCliente));
+
+        //Mailtrap não suporta muitos e-mails em um curto espaço de tempo, coloquei um sleep de 2 segundos para enviar tudo
+        Thread.sleep(2000);
+
         return email;
     }
 
